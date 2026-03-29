@@ -1,0 +1,18 @@
+{
+  "boards": [
+    {
+      "id": "1",
+      "name": "Sample board",
+      "description": "Starter board for local development."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "boardId": "1",
+      "title": "Welcome to Tasker",
+      "status": "todo",
+      "order": 0
+    }
+  ]
+}
