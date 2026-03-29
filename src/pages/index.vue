@@ -101,6 +101,19 @@
   const appStore = useAppStore()
   const { t } = useI18n()
 
+  const apiBase = import.meta.env.VITE_API_BASE ?? '/api'
+
+  /**
+   * Async startup: wait for the JSON Server (proxied under `apiBase`) when available.
+   * Keeps the route Suspense fallback visible until the first data touch completes or fails softly.
+   */
+  try {
+    const res = await fetch(`${apiBase}/boards`, { headers: { Accept: 'application/json' } })
+    if (res.ok) await res.json()
+  } catch {
+    // e.g. API not running — still show the welcome page
+  }
+
   function scrollToFeatures () {
     document.getElementById('features')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }

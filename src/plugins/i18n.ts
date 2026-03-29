@@ -2,6 +2,9 @@ import { createI18n } from 'vue-i18n'
 
 const messages = {
   en: {
+    common: {
+      loading: 'Loading…',
+    },
     welcome: {
       eyebrow: 'Projects, tasks, and boards',
       headline: 'Ship work with clarity',
