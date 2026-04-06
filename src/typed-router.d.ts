@@ -34,6 +34,34 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/boards': RouteRecordInfo<
+      '/boards',
+      '/boards',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/login': RouteRecordInfo<
+      '/login',
+      '/login',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/signup': RouteRecordInfo<
+      '/signup',
+      '/signup',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/boards': RouteRecordInfo<
+      '/boards',
+      '/boards',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -50,6 +78,30 @@ declare module 'vue-router/auto-routes' {
     'src/pages/index.vue': {
       routes:
         | '/'
+      views:
+        | never
+    }
+    'src/pages/boards.vue': {
+      routes:
+        | '/boards'
+      views:
+        | never
+    }
+    'src/pages/login.vue': {
+      routes:
+        | '/login'
+      views:
+        | never
+    }
+    'src/pages/signup.vue': {
+      routes:
+        | '/signup'
+      views:
+        | never
+    }
+    'src/pages/boards.vue': {
+      routes:
+        | '/boards'
       views:
         | never
     }

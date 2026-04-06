@@ -3,6 +3,27 @@
     <v-container class="py-10 py-md-16" fluid>
       <v-row justify="center">
         <v-col cols="12" md="10" lg="9" xl="8">
+          <v-alert
+            v-if="authStore.isAuthenticated"
+            class="mb-8 text-start"
+            density="comfortable"
+            rounded="lg"
+            type="success"
+            variant="tonal"
+          >
+            <div class="d-flex flex-column flex-sm-row align-sm-center justify-space-between ga-3">
+              <span>{{ t('auth.session.signedInAs', { name: authStore.username ?? '' }) }}</span>
+              <v-btn
+                color="success"
+                size="small"
+                variant="tonal"
+                @click="authStore.logout()"
+              >
+                {{ t('auth.logout') }}
+              </v-btn>
+            </div>
+          </v-alert>
+
           <section class="text-center mb-12 mb-md-16">
             <v-chip
               class="mb-6"
@@ -28,11 +49,23 @@
 
             <div class="d-flex flex-column flex-sm-row ga-3 justify-center align-center">
               <v-btn
+                v-if="authStore.isAuthenticated"
                 color="primary"
                 size="large"
                 rounded="lg"
                 min-width="180"
-                @click="scrollToFeatures"
+                prepend-icon="mdi-view-dashboard-outline"
+                :to="{ path: '/boards' }"
+              >
+                {{ t('welcome.viewBoards') }}
+              </v-btn>
+              <v-btn
+                v-else
+                color="primary"
+                size="large"
+                rounded="lg"
+                min-width="180"
+                :to="{ path: '/signup' }"
               >
                 {{ t('welcome.getStarted') }}
               </v-btn>
@@ -96,23 +129,12 @@
 
 <script lang="ts" setup>
   import { useAppStore } from '@/stores/app'
+  import { useAuthStore } from '@/stores/auth'
   import { useI18n } from 'vue-i18n'
 
   const appStore = useAppStore()
+  const authStore = useAuthStore()
   const { t } = useI18n()
-
-  const apiBase = import.meta.env.VITE_API_BASE ?? '/api'
-
-  /**
-   * Async startup: wait for the JSON Server (proxied under `apiBase`) when available.
-   * Keeps the route Suspense fallback visible until the first data touch completes or fails softly.
-   */
-  try {
-    const res = await fetch(`${apiBase}/boards`, { headers: { Accept: 'application/json' } })
-    if (res.ok) await res.json()
-  } catch {
-    // e.g. API not running — still show the welcome page
-  }
 
   function scrollToFeatures () {
     document.getElementById('features')?.scrollIntoView({ behavior: 'smooth', block: 'start' })

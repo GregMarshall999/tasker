@@ -1,18 +1,18 @@
 {
-  "boards": [
+  "users": [
     {
-      "id": "1",
-      "name": "Sample board",
-      "description": "Starter board for local development."
+      "username": "Greg",
+      "password": "test123",
+      "id": "rHgD44ATaaY"
     }
   ],
-  "tasks": [
+  "boards": [
     {
-      "id": "1",
-      "boardId": "1",
-      "title": "Welcome to Tasker",
-      "status": "todo",
-      "order": 0
+      "id": "brd_sample_1",
+      "title": "Sample board",
+      "ownerId": "rHgD44ATaaY"
     }
-  ]
+  ],
+  "tasks": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
