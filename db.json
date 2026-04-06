@@ -8,9 +8,9 @@
   ],
   "boards": [
     {
-      "id": "brd_sample_1",
-      "title": "Sample board",
-      "ownerId": "rHgD44ATaaY"
+      "title": "Tester",
+      "ownerId": "rHgD44ATaaY",
+      "id": "HJgRhIihHF0"
     }
   ],
   "tasks": [],
